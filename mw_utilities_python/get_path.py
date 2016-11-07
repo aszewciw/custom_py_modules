@@ -54,9 +54,9 @@ def get_base_path(node=None):
     if node==None: node = get_system()
 
     if node=='bender':
-        path = '/fs1/szewciw/MW_structure/'
+        path = '/fs1/szewciw/MW_Structure/'
     elif node=='Adams-MacBook-Pro-2':
-        path = '/Users/Adam/Codes/SEGUE/MW_structure/'
+        path = '/Users/Adam/Codes/SEGUE/MW_Structure/'
     else:
         raise ValueError('error: unknown data directory for this enviorment!')
 
