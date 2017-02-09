@@ -145,3 +145,17 @@ def get_corrfunc_path(node=None):
     path = '/fs1/szewciw/Corrfunc/'
 
     return path
+
+
+def get_pix_file(node=None):
+    """
+    get the base path to the pixfile
+    """
+    if node==None: node = get_system()
+
+    if node!='bender':
+        raise ValueError('error: just run corrfunc on bender')
+
+    file = '/home/piscioja/SDSSPix/Maps/lss_geometry_north.dr72.pix'
+
+    return file

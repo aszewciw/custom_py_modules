@@ -10,3 +10,4 @@ from .get_path import get_utils_path
 from .get_path import get_carmen_path
 from .get_path import get_carmenHD_path
 from .get_path import get_corrfunc_path
+from .get_path import get_pix_file
