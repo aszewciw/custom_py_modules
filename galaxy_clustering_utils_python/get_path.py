@@ -54,9 +54,9 @@ def get_base_path(node=None):
     if node==None: node = get_system()
 
     if node=='bender':
-        path = '/fs1/szewciw/MW_Structure/'
+        path = '/fs1/szewciw/galaxy_clustering/'
     elif node=='Adams-MacBook-Pro-2':
-        path = '/Users/Adam/Codes/SEGUE/MW_Structure/'
+        path = '/Users/Adam/Codes/SEGUE/galaxy_clustering/'
     else:
         raise ValueError('error: unknown data directory for this enviornment!')
 
@@ -72,7 +72,7 @@ def get_scripts_path(node=None):
     if node!='bender' and node!='Adams-MacBook-Pro-2':
         raise ValueError('error: unknown code directory for this environment')
 
-    path = get_base_path(node)+'scripts/'
+    path = get_base_path(node)+'codes/'
 
     return path
 
@@ -91,29 +91,43 @@ def get_results_path(node=None):
     return path
 
 
-def get_rawdata_path(node=None):
+def get_utils_path(node=None):
     """
-    get the base path to raw data
+    get the base path to utilities
     """
     if node==None: node = get_system()
 
     if node!='bender' and node!='Adams-MacBook-Pro-2':
         raise ValueError('error: unknown code directory for this environment')
 
-    path = get_base_path(node)+'data_segue_raw/'
+    path = get_base_path(node)+'utils/'
 
     return path
 
 
-def get_cleandata_path(node=None):
+def get_carmen_path(node=None):
     """
-    get the base path to cleaned data folder
+    get the base path to folder containing results of carmen simulations
     """
     if node==None: node = get_system()
 
-    if node!='bender' and node!='Adams-MacBook-Pro-2':
-        raise ValueError('error: unknown code directory for this environment')
+    if node!='bender':
+        raise ValueError('error: data only exists on bender')
 
-    path = get_base_path(node)+'data_segue_gdwarfs_cln/'
+    path = '/fs2/andreas/Carmen/Planck/'
+
+    return path
+
+
+def get_carmenHD_path(node=None):
+    """
+    get the base path to folder containing results of carmenHD simulations
+    """
+    if node==None: node = get_system()
+
+    if node!='bender':
+        raise ValueError('error: data only exists on bender')
+
+    path = '/fs2/andreas/Carmelota/Planck/'
 
     return path
