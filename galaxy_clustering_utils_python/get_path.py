@@ -131,3 +131,17 @@ def get_carmenHD_path(node=None):
     path = '/fs2/andreas/Carmelota/Planck/'
 
     return path
+
+
+def get_corrfunc_path(node=None):
+    """
+    get the base path to folder containing results of carmenHD simulations
+    """
+    if node==None: node = get_system()
+
+    if node!='bender':
+        raise ValueError('error: just run corrfunc on bender')
+
+    path = '/fs1/szewciw/Corrfunc/'
+
+    return path
