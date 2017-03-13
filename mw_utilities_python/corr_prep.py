@@ -64,10 +64,6 @@ def set_rbins(r_min=0.005, r_max=2.0, nbins=12, log=True, filepath=None):
     output_file = open(output_filename, 'w')
     # output number of bins first
     output_file.write('{}\n'.format(nbins))
-    # for b in bins_list:
-    #     output_file.write('{}\t{}\t{}\t{}\n'
-    #                       .format(b.r_lower, b.r_upper, b.r_middle, b.dr))
-
     for b in bins_list:
         output_file.write('{0:.14f}\t{1:.14f}\t{2:.14f}\t{3:.14f}\n'
                           .format(b.r_lower, b.r_upper, b.r_middle, b.dr))
