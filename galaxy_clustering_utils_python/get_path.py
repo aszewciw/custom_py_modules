@@ -18,8 +18,10 @@ __maintainer__ =['Adam Szewciw']
 
 
 def known_systems():
-    return ["bender", "Adams-MacBook-Pro-2"]
+    return ["bender", "Adams-MacBook-Pro-2", "stampede", "stampede2"]
 
+def known_login_nodes():
+    return ["login1", "login2", "login3", "login4"]
 
 def get_system():
     """
@@ -30,8 +32,14 @@ def get_system():
     path_to_home = os.getenv("HOME")
 
     host = os.popen('echo $HOSTNAME').read()
-    host = host.split('.')[0]
-    host = host.split('\n')[0]
+    tmp = host.split('.')[0]
+    tmp = tmp.split('\n')[0]
+
+    # Check if first term in hostname is a login node
+    if tmp in known_login_nodes():
+        host = host.split('.')[1]
+    else:
+        host = tmp
 
     if host in known_systems(): return host
     else:
@@ -43,7 +51,6 @@ def get_system():
         # else: raise ValueError('unknown system.')
         # return host
         raise ValueError('unknown system.')
-
 
 
 def get_base_path(node=None):
