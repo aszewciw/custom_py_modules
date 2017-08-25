@@ -200,6 +200,7 @@ def get_gsl_inc(node=None):
     """
     get path to this system's gsl include directory
     """
+    import os
     if node==None: node = get_system()
 
     if not (node in known_systems()):
