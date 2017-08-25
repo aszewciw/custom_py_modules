@@ -10,7 +10,9 @@ Description:
 #Setup file paths for common systems I work on.
 
 
-__all__        =['get_system','get_base_path','get_scripts_path','get_adam_path','get_gillian_path','get_rawdata_path','get_cleandata_path']
+__all__        =['get_system','get_base_path','get_scripts_path','get_adam_path',
+                 'get_gillian_path','get_rawdata_path','get_cleandata_path'
+                 'get_gsl_lib', 'get_gsl_inc']
 __copyright__  =["Copyright 2016 Victor Calderon, common utilities in python; modified by Adam Szewciw"]
 __author__     =['Adam Szewciw']
 __email__      =['adam.o.szewciw@vanderbilt.edu']
@@ -174,3 +176,37 @@ def get_pix_file(node=None):
     file = '/home/piscioja/SDSSPix/Maps/lss_geometry_north.dr72.pix'
 
     return file
+
+def get_gsl_lib(node=None):
+    """
+    get path to this system's gsl lib directory
+    """
+    if node==None: node = get_system()
+
+    if not (node in known_systems()):
+        raise ValueError('error: unknown code directory for this environment')
+
+    if node=='Adams-MacBook-Pro-2':
+        raise ValueError("Don't run this on your mac, dummy")
+
+    if node=='bender':
+        path='/usr/local/gsl/latest/nehalem/intel12/nonet/lib'
+    elif node=='stampede' or node=='stampede2':
+        path=os.environ['TACC_GSL_LIB']
+
+def get_gsl_inc(node=None):
+    """
+    get path to this system's gsl include directory
+    """
+    if node==None: node = get_system()
+
+    if not (node in known_systems()):
+        raise ValueError('error: unknown code directory for this environment')
+
+    if node=='Adams-MacBook-Pro-2':
+        raise ValueError("Don't run this on your mac, dummy")
+
+    if node=='bender':
+        path='/usr/local/gsl/latest/nehalem/intel12/nonet/include'
+    elif node=='stampede' or node=='stampede2':
+        path=os.environ['TACC_GSL_INC']
