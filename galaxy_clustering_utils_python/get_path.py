@@ -194,6 +194,8 @@ def get_gsl_lib(node=None):
     elif node=='stampede' or node=='stampede2':
         path=os.environ['TACC_GSL_LIB']
 
+    return path
+
 def get_gsl_inc(node=None):
     """
     get path to this system's gsl include directory
@@ -210,3 +212,5 @@ def get_gsl_inc(node=None):
         path='/usr/local/gsl/latest/nehalem/intel12/nonet/include'
     elif node=='stampede' or node=='stampede2':
         path=os.environ['TACC_GSL_INC']
+
+    return path
