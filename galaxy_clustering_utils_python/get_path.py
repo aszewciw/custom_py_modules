@@ -50,6 +50,7 @@ def get_base_path(node=None):
     """
     get the base path to project folder for the system
     """
+    import os
 
     if node==None: node = get_system()
 
