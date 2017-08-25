@@ -181,6 +181,7 @@ def get_gsl_lib(node=None):
     """
     get path to this system's gsl lib directory
     """
+    import os
     if node==None: node = get_system()
 
     if not (node in known_systems()):
