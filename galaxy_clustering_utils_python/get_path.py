@@ -4,34 +4,29 @@ Description:
     Setup file paths for systems that I usually work on.
 '''
 
-#Duncan Campbell
-#September 2, 2012
-#Yale University
-#Setup file paths for common systems I work on.
-
 
 __all__        =['get_system','get_base_path','get_scripts_path','get_adam_path',
                  'get_gillian_path','get_rawdata_path','get_cleandata_path'
                  'get_gsl_lib', 'get_gsl_inc']
-__copyright__  =["Copyright 2016 Victor Calderon, common utilities in python; modified by Adam Szewciw"]
+__copyright__  =['Copyright 2016 Adam Szewciw, common utilities in python']
 __author__     =['Adam Szewciw']
 __email__      =['adam.o.szewciw@vanderbilt.edu']
 __maintainer__ =['Adam Szewciw']
 
 
 def known_systems():
-    return ["bender", "Adams-MacBook-Pro-2", "stampede", "stampede2"]
+    return ['bender', 'Adams-MacBook-Pro-2', 'stampede', 'stampede2']
 
 def known_login_nodes():
-    return ["login1", "login2", "login3", "login4"]
+    return ['login1', 'login2', 'login3', 'login4']
 
 def get_system():
-    """
+    '''
     get the name of the system
-    """
+    '''
 
     import os, sys
-    # path_to_home = os.getenv("HOME")
+    # path_to_home = os.getenv('HOME')
 
     host = os.popen('echo $HOSTNAME').read()
     tmp = host.split('.')[0]
@@ -49,9 +44,9 @@ def get_system():
 
 
 def get_base_path(node=None):
-    """
+    '''
     get the base path to project folder for the system
-    """
+    '''
     import os
 
     if node==None: node = get_system()
@@ -69,9 +64,9 @@ def get_base_path(node=None):
 
 
 def get_scripts_path(node=None):
-    """
+    '''
     get the base path to various scripts
-    """
+    '''
     if node==None: node = get_system()
 
     if not (node in known_systems()):
@@ -83,9 +78,9 @@ def get_scripts_path(node=None):
 
 
 def get_adam_path(node=None):
-    """
+    '''
     get the base path to Adam's results folder
-    """
+    '''
     if node==None: node = get_system()
 
     if not (node in known_systems()):
@@ -96,9 +91,9 @@ def get_adam_path(node=None):
     return path
 
 def get_gillian_path(node=None):
-    """
+    '''
     get the base path to Gillian's results folder
-    """
+    '''
     if node==None: node = get_system()
 
     if not (node in known_systems()):
@@ -109,9 +104,9 @@ def get_gillian_path(node=None):
     return path
 
 def get_utils_path(node=None):
-    """
+    '''
     get the base path to utilities
-    """
+    '''
     if node==None: node = get_system()
 
     if not (node in known_systems()):
@@ -123,9 +118,9 @@ def get_utils_path(node=None):
 
 
 def get_carmen_path(node=None):
-    """
+    '''
     get the base path to folder containing results of carmen simulations
-    """
+    '''
     if node==None: node = get_system()
 
     if node!='bender':
@@ -137,9 +132,9 @@ def get_carmen_path(node=None):
 
 
 def get_carmenHD_path(node=None):
-    """
+    '''
     get the base path to folder containing results of carmenHD simulations
-    """
+    '''
     if node==None: node = get_system()
 
     if node!='bender':
@@ -151,9 +146,9 @@ def get_carmenHD_path(node=None):
 
 
 def get_corrfunc_path(node=None):
-    """
+    '''
     get the base path to folder containing manodeep's corrfunc
-    """
+    '''
     if node==None: node = get_system()
 
     if node!='bender':
@@ -165,9 +160,9 @@ def get_corrfunc_path(node=None):
 
 
 def get_pix_file(node=None):
-    """
+    '''
     get the base path to the pixfile
-    """
+    '''
     if node==None: node = get_system()
 
     if node!='bender':
@@ -178,9 +173,9 @@ def get_pix_file(node=None):
     return file
 
 def get_gsl_lib(node=None):
-    """
+    '''
     get path to this system's gsl lib directory
-    """
+    '''
     import os
     if node==None: node = get_system()
 
@@ -188,7 +183,7 @@ def get_gsl_lib(node=None):
         raise ValueError('error: unknown code directory for this environment')
 
     if node=='Adams-MacBook-Pro-2':
-        raise ValueError("Don't run this on your mac, dummy")
+        raise ValueError('Do not run this on your mac, dummy')
 
     if node=='bender':
         path='/usr/local/gsl/latest/nehalem/intel12/nonet/lib'
@@ -198,9 +193,9 @@ def get_gsl_lib(node=None):
     return path
 
 def get_gsl_inc(node=None):
-    """
+    '''
     get path to this system's gsl include directory
-    """
+    '''
     import os
     if node==None: node = get_system()
 
@@ -208,7 +203,7 @@ def get_gsl_inc(node=None):
         raise ValueError('error: unknown code directory for this environment')
 
     if node=='Adams-MacBook-Pro-2':
-        raise ValueError("Don't run this on your mac, dummy")
+        raise ValueError('Do not run this on your mac, dummy')
 
     if node=='bender':
         path='/usr/local/gsl/latest/nehalem/intel12/nonet/include'
